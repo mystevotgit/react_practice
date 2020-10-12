@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import Form from "./components/Form";
+import Display from "./components/Display";
 
 function App() {
+    const [name, setName] = useState("Anon");
+    const [number, setNumber] = useState(0);
+
+    const handleNameChange = (e) => {
+        setName(e);
+    }
+
+    const handleNumberChange = (e) => {
+        setNumber(e);
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form onFakeChange={handleNameChange} name="name"/>
+      <Form onFakeChange={handleNumberChange} name="number"/>
+      <Display name={name} number={number}/>
     </div>
   );
 }
